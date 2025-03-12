@@ -33,11 +33,19 @@
   },
   "depcheck": {
     "ignores": [
+      "conventional-changelog-conventionalcommits",
       "cspell",
       "depcheck",
       "husky",
-      "@commitlint/cli",
+      "semantic-release",
       "@commitlint/config-conventional",
+      "@semantic-release/changelog",
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/exec",
+      "@semantic-release/git",
+      "@semantic-release/npm",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
       "@types/node"
     ]
   },
