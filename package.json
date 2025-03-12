@@ -24,9 +24,15 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "bin": {
     "printer": "./dist/bin/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
   },
   "publishConfig": {
     "access": "public"

@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import { printSuccess, printError, printWarning, printMessage, printInfo } from "../index.js";
+import { Printer } from "../core/printer.js";
 
 const ARG_OFFSET = 2;
 const args = process.argv.slice(ARG_OFFSET);
 const [command, ...message] = args;
 const messageText = message.join(" ");
+Printer.enableVerbose();
 
 /**
  * Prints a message based on the command.
@@ -13,17 +14,17 @@ const messageText = message.join(" ");
  */
 switch (command) {
   case "success":
-    printSuccess(messageText);
+    Printer.success(messageText);
     break;
   case "error":
-    printError(messageText);
+    Printer.error(messageText);
     break;
   case "warning":
-    printWarning(messageText);
+    Printer.warning(messageText);
     break;
   case "info":
-    printInfo(messageText);
+    Printer.info(messageText);
     break;
   default:
-    printMessage("Usage: printer <success|error|warning|info> <message>");
+    Printer.message("Usage: printer <success|error|warning|info> <message>");
 }
