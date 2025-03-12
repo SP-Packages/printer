@@ -24,20 +24,34 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "bin": {
     "printer": "./dist/bin/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
   },
   "publishConfig": {
     "access": "public"
   },
   "depcheck": {
     "ignores": [
+      "conventional-changelog-conventionalcommits",
       "cspell",
       "depcheck",
       "husky",
-      "@commitlint/cli",
+      "semantic-release",
       "@commitlint/config-conventional",
+      "@semantic-release/changelog",
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/exec",
+      "@semantic-release/git",
+      "@semantic-release/npm",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
       "@types/node"
     ]
   },
