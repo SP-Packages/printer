@@ -1,6 +1,6 @@
 {
   "name": "@sp-packages/printer",
-  "description": "A Node.js module for handling and displaying formatted text in the console.",
+  "description": "A lightweight CLI tool and Node.js module for formatted console output.",
   "version": "2.1.0",
   "type": "module",
   "license": "MIT",
