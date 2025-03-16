@@ -4,3 +4,9 @@ ponnusamy
 commitlint
 conventionalcommits
 carryforward
+depkit
+lintrc
+phpcbf
+phpcs
+phpstan
+phpcsfixer
