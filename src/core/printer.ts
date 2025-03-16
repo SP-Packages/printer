@@ -59,7 +59,7 @@ export class Printer {
           if (Array.isArray(message)) {
             this.array(message);
           } else {
-            console.warn("Expected an array for type 'array'");
+            console.log("Expected an array for type 'array'");
           }
           break;
         case "error":
@@ -181,7 +181,7 @@ export class Printer {
    */
   static warning(message: string) {
     if (this.shouldPrint()) {
-      console.warn(formatMessage("warning", message));
+      console.log(formatMessage("warning", message));
     }
   }
 
@@ -192,10 +192,10 @@ export class Printer {
    */
   static error(message: string, error?: unknown) {
     if (this.shouldPrint()) {
-      console.error(formatMessage("error", message));
+      console.log(formatMessage("error", message));
       if (error) {
         const errMsg = error instanceof Error ? error.stack || error.message : String(error);
-        console.error(formatMessage("error", errMsg));
+        console.log(formatMessage("error", errMsg));
       }
     }
   }
