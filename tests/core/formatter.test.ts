@@ -11,7 +11,7 @@ describe("formatMessage", () => {
 
   it("should format success messages correctly", () => {
     const message = formatMessage("success", "Operation successful");
-    expect(message).toContain("✔"); // Success icon
+    expect(message).toContain("✅"); // Success icon
     expect(message).toContain("[SUCCESS]");
     expect(message).toContain("Operation successful");
   });
