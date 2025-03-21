@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import chalk from "chalk";
-import { formatMessage } from "./formatter.js";
+import { formatMessage, sanitizeMessage } from "./formatter.js";
 
 export class Printer {
   private static verbose = false;
@@ -79,7 +79,7 @@ export class Printer {
           this.sectionHeader(String(message));
           break;
         default:
-          console.log(message);
+          console.log(sanitizeMessage(message as string));
       }
     }
   }

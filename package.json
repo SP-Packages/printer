@@ -24,9 +24,6 @@
     "dist",
     "README.md"
   ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "bin": {
     "printer": "dist/bin/index.js"
   },
@@ -99,7 +96,8 @@
     "vitest": "^3.0.8"
   },
   "dependencies": {
-    "chalk": "^5.4.1"
+    "chalk": "^5.4.1",
+    "strip-ansi": "^7.1.0"
   },
   "scripts": {
     "build": "tsc && esbuild dist/**/*.js --minify --outdir=dist --allow-overwrite --tree-shaking=true --platform=node",
