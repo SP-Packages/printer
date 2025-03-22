@@ -45,13 +45,30 @@ export class Printer {
   }
 
   /**
+   * Check if the printer is in verbose mode.
+   * Note: This does not check if the printer should print, only if verbose mode is enabled.
+   * @returns True if in verbose mode, false otherwise.
+   */
+  static get isVerbose() {
+    return this.verbose;
+  }
+
+  /**
    * Log a message.
    * @param message - The message to log.
    * @param type - The type of message
    */
   static log(
     message: unknown,
-    type: "error" | "array" | "text" | "header" | "subheader" | "section" = "text",
+    type:
+      | "error"
+      | "success"
+      | "warning"
+      | "array"
+      | "text"
+      | "header"
+      | "subheader"
+      | "section" = "text",
   ) {
     if (this.verbose && this.shouldPrint()) {
       switch (type) {
@@ -68,6 +85,12 @@ export class Printer {
           } else {
             this.error(String(message));
           }
+          break;
+        case "success":
+          this.success(String(message));
+          break;
+        case "warning":
+          this.warning(String(message));
           break;
         case "header":
           this.header(String(message));
@@ -149,6 +172,48 @@ export class Printer {
     if (this.shouldPrint()) {
       const length = 40;
       const line = chalk.blue.bold("=".repeat(length));
+      console.log(line);
+      console.log(chalk.blue.bold(` ${message}`));
+      console.log(line);
+    }
+  }
+
+  /**
+   * Log a simple header.
+   * @param message - The message to log.
+   */
+  static plainHeader(message: string) {
+    if (this.shouldPrint()) {
+      const length = 40;
+      const line = chalk.cyan.bold("-".repeat(length));
+      console.log(line);
+      console.log(chalk.cyan.bold(` ${message}`));
+      console.log(line);
+    }
+  }
+
+  /**
+   * Log a simple subheader.
+   * @param message - The message to log.
+   */
+  static plainSubheader(message: string) {
+    if (this.shouldPrint()) {
+      const length = 30;
+      const line = chalk.magenta.bold("-".repeat(length));
+      console.log(line);
+      console.log(chalk.magenta.bold(` ${message}`));
+      console.log(line);
+    }
+  }
+
+  /**
+   * Log a simple section header.
+   * @param message - The message to log.
+   */
+  static plainSectionHeader(message: string) {
+    if (this.shouldPrint()) {
+      const length = 20;
+      const line = chalk.blue.bold("-".repeat(length));
       console.log(line);
       console.log(chalk.blue.bold(` ${message}`));
       console.log(line);
