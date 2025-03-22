@@ -45,6 +45,14 @@ export class Printer {
   }
 
   /**
+   * Check if the printer is in verbose mode.
+   * @returns True if in verbose mode, false otherwise.
+   */
+  static get isVerbose() {
+    return this.verbose;
+  }
+
+  /**
    * Log a message.
    * @param message - The message to log.
    * @param type - The type of message
