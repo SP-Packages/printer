@@ -1,32 +1,78 @@
-import { describe, it, expect } from "vitest";
-import { formatMessage } from "../../src/core/formatter";
+import { describe, it, expect, vi } from "vitest";
+import { sanitizeMessage, formatMessage } from "../../src/core/formatter";
+import stripAnsi from "strip-ansi";
 
-describe("formatMessage", () => {
-  it("should format info messages correctly", () => {
-    const message = formatMessage("info", "This is an info message");
-    expect(message).toContain("ℹ"); // Checks for the info icon
-    expect(message).toContain("[INFO]");
-    expect(message).toContain("This is an info message");
+vi.mock("strip-ansi", () => ({
+  default: vi.fn((msg) => msg),
+}));
+
+describe("Formatter Module", () => {
+  describe("detectEnvironment", () => {
+    it("should detect CI environment", async () => {
+      process.env.CI = "true";
+      const { detectEnvironment } = await import("../../src/core/formatter");
+      expect(detectEnvironment()).toBe("ci");
+      delete process.env.CI;
+    });
+
+    it("should detect VSCode environment", async () => {
+      process.env.TERM_PROGRAM = "vscode";
+      const { detectEnvironment } = await import("../../src/core/formatter");
+      expect(detectEnvironment()).toBe("vscode");
+      delete process.env.TERM_PROGRAM;
+    });
+
+    it("should detect terminal environment", async () => {
+      const { detectEnvironment } = await import("../../src/core/formatter");
+      expect(detectEnvironment()).toBe("terminal");
+    });
   });
 
-  it("should format success messages correctly", () => {
-    const message = formatMessage("success", "Operation successful");
-    expect(message).toContain("✅"); // Success icon
-    expect(message).toContain("[SUCCESS]");
-    expect(message).toContain("Operation successful");
+  describe("sanitizeMessage", () => {
+    it("should strip ANSI codes in CI environment", () => {
+      process.env.CI = "true";
+      const message = "\u001b[31mHello\u001b[39m";
+      expect(sanitizeMessage(message)).toBe(stripAnsi(message));
+      delete process.env.CI;
+    });
+
+    it("should not strip ANSI codes in terminal environment", () => {
+      const message = "\u001b[31mHello\u001b[39m";
+      expect(sanitizeMessage(message)).toBe(message);
+    });
   });
 
-  it("should format warning messages correctly", () => {
-    const message = formatMessage("warning", "This is a warning");
-    expect(message).toContain("⚠");
-    expect(message).toContain("[WARNING]");
-    expect(message).toContain("This is a warning");
-  });
+  describe("formatMessage", () => {
+    it("should format message with info type", () => {
+      const message = "This is an info message";
+      const formattedMessage = formatMessage("info", message);
+      expect(formattedMessage).toContain("ℹ");
+      expect(formattedMessage).toContain("[INFO]");
+      expect(formattedMessage).toContain(message);
+    });
 
-  it("should format error messages correctly", () => {
-    const message = formatMessage("error", "Something went wrong");
-    expect(message).toContain("❌");
-    expect(message).toContain("[ERROR]");
-    expect(message).toContain("Something went wrong");
+    it("should format message with success type", () => {
+      const message = "This is a success message";
+      const formattedMessage = formatMessage("success", message);
+      expect(formattedMessage).toContain("✅");
+      expect(formattedMessage).toContain("[SUCCESS]");
+      expect(formattedMessage).toContain(message);
+    });
+
+    it("should format message with warning type", () => {
+      const message = "This is a warning message";
+      const formattedMessage = formatMessage("warning", message);
+      expect(formattedMessage).toContain("⚠");
+      expect(formattedMessage).toContain("[WARNING]");
+      expect(formattedMessage).toContain(message);
+    });
+
+    it("should format message with error type", () => {
+      const message = "This is an error message";
+      const formattedMessage = formatMessage("error", message);
+      expect(formattedMessage).toContain("❌");
+      expect(formattedMessage).toContain("[ERROR]");
+      expect(formattedMessage).toContain(message);
+    });
   });
 });

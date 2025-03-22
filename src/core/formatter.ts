@@ -5,7 +5,7 @@ import stripAnsi from "strip-ansi";
  * Detect the environment in which the script is running.
  * @returns The environment type: "ci", "vscode", or "terminal".
  */
-function detectEnvironment(): "ci" | "vscode" | "terminal" {
+export function detectEnvironment(): "ci" | "vscode" | "terminal" {
   if (process.env.CI === "true") return "ci";
   if (process.env.TERM_PROGRAM === "vscode") return "vscode";
   if (process.env.NAME === "Code") return "vscode";
