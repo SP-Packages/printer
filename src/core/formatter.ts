@@ -32,11 +32,11 @@ const symbols = {
     color: chalk.green,
   },
   warning: {
-    icon: supportsUnicode ? chalk.yellow("⚠") : chalk.yellow("!"),
+    icon: supportsUnicode ? chalk.yellow("⚠ ") : chalk.yellow("!"),
     color: chalk.yellow,
   },
   error: {
-    icon: supportsUnicode ? chalk.red("❌") : chalk.red("x"),
+    icon: supportsUnicode ? chalk.red("❌ ") : chalk.red("x"),
     color: chalk.red,
   },
 };
