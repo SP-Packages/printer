@@ -1,3 +1,15 @@
+## [2.5.0](https://github.com/SP-Packages/printer/compare/v2.4.0...v2.5.0) (2025-03-22)
+
+### Features
+
+* **printer:** add logging methods for headers and subheader ([ed09324](https://github.com/SP-Packages/printer/commit/ed0932434d33ccc58afc7178aa566048f920248a))
+* **printer:** add static method to check if printer is in verbose mode ([0b89173](https://github.com/SP-Packages/printer/commit/0b89173722b1cb46d0e9e25ebf810c9edb545d9d))
+* **printer:** add success and warning types to log method ([0c7a203](https://github.com/SP-Packages/printer/commit/0c7a203213a8365f0cfeafb7b9115d62193522f3))
+
+### Bug Fixes
+
+* **formatter:** add space after warning and error icons for readability ([204a287](https://github.com/SP-Packages/printer/commit/204a287f08c5966005849ce425fb054df9284d50))
+
 ## [2.4.0](https://github.com/SP-Packages/printer/compare/v2.3.0...v2.4.0) (2025-03-22)
 
 ### Features
