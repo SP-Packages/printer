@@ -156,6 +156,48 @@ export class Printer {
   }
 
   /**
+   * Log a simple header.
+   * @param message - The message to log.
+   */
+  static plainHeader(message: string) {
+    if (this.shouldPrint()) {
+      const length = 40;
+      const line = chalk.cyan.bold("-".repeat(length));
+      console.log(line);
+      console.log(chalk.cyan.bold(` ${message}`));
+      console.log(line);
+    }
+  }
+
+  /**
+   * Log a simple subheader.
+   * @param message - The message to log.
+   */
+  static plainSubheader(message: string) {
+    if (this.shouldPrint()) {
+      const length = 30;
+      const line = chalk.magenta.bold("-".repeat(length));
+      console.log(line);
+      console.log(chalk.magenta.bold(` ${message}`));
+      console.log(line);
+    }
+  }
+
+  /**
+   * Log a simple section header.
+   * @param message - The message to log.
+   */
+  static plainSectionHeader(message: string) {
+    if (this.shouldPrint()) {
+      const length = 20;
+      const line = chalk.blue.bold("-".repeat(length));
+      console.log(line);
+      console.log(chalk.blue.bold(` ${message}`));
+      console.log(line);
+    }
+  }
+
+  /**
    * Log a message as info.
    * @param message - The message to log.
    */
