@@ -1,3 +1,11 @@
+## [2.4.0](https://github.com/SP-Packages/printer/compare/v2.3.0...v2.4.0) (2025-03-22)
+
+### Features
+
+* **formatter:** enhance environment detection and sanitize logic ([09ed766](https://github.com/SP-Packages/printer/commit/09ed7660f0c111bcbd4d4bac401f72235469f485))
+* **formatter:** export detectEnvironment function and enhance tests ([1e521dd](https://github.com/SP-Packages/printer/commit/1e521dd47529599887970bc7ee723b289cb9fa3d))
+* **printer:** enhance message formatting with environment detection ([5fe105e](https://github.com/SP-Packages/printer/commit/5fe105e2c5ed41a2a73031066070ee5108fc589c))
+
 ## [2.3.0](https://github.com/SP-Packages/printer/compare/v2.2.0...v2.3.0) (2025-03-16)
 
 ### Features
