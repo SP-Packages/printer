@@ -79,7 +79,7 @@ export class Printer {
           this.sectionHeader(String(message));
           break;
         default:
-          console.log(sanitizeMessage(message as string));
+          console.log(sanitizeMessage(typeof message === "string" ? message : String(message)));
       }
     }
   }

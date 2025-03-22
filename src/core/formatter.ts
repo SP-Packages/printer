@@ -7,8 +7,9 @@ import stripAnsi from "strip-ansi";
  */
 export function detectEnvironment(): "ci" | "vscode" | "terminal" {
   if (process.env.CI === "true") return "ci";
+  if (process.env.VSCODE_CWD) return "vscode";
   if (process.env.TERM_PROGRAM === "vscode") return "vscode";
-  if (process.env.NAME === "Code") return "vscode";
+
   return "terminal";
 }
 
@@ -49,7 +50,7 @@ export type MessageType = keyof typeof symbols;
  * @returns The sanitized message
  */
 export function sanitizeMessage(message: string): string {
-  if (environment === "vscode" || environment === "ci") {
+  if (environment === "vscode" || environment === "ci" || !supportsUnicode) {
     return stripAnsi(message);
   }
   return message;
