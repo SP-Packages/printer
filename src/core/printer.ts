@@ -46,6 +46,7 @@ export class Printer {
 
   /**
    * Check if the printer is in verbose mode.
+   * Note: This does not check if the printer should print, only if verbose mode is enabled.
    * @returns True if in verbose mode, false otherwise.
    */
   static get isVerbose() {
