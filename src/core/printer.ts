@@ -51,7 +51,15 @@ export class Printer {
    */
   static log(
     message: unknown,
-    type: "error" | "array" | "text" | "header" | "subheader" | "section" = "text",
+    type:
+      | "error"
+      | "success"
+      | "warning"
+      | "array"
+      | "text"
+      | "header"
+      | "subheader"
+      | "section" = "text",
   ) {
     if (this.verbose && this.shouldPrint()) {
       switch (type) {
@@ -68,6 +76,12 @@ export class Printer {
           } else {
             this.error(String(message));
           }
+          break;
+        case "success":
+          this.success(String(message));
+          break;
+        case "warning":
+          this.warning(String(message));
           break;
         case "header":
           this.header(String(message));
