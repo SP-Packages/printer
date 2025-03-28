@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import chalk from "chalk";
+import ora, { Ora } from "ora"; // Import the ora package
 import { formatMessage, sanitizeMessage } from "./formatter.js";
 
 export class Printer {
@@ -105,6 +106,24 @@ export class Printer {
           console.log(sanitizeMessage(typeof message === "string" ? message : String(message)));
       }
     }
+  }
+
+  /**
+   * Display a spinner/loader.
+   * @param text - The text to display with the spinner.
+   * @returns The spinner instance.
+   */
+  static spinner(text: string): Ora {
+    const spinner = ora({
+      text: sanitizeMessage(text),
+      color: "blue",
+    });
+
+    if (this.shouldPrint()) {
+      spinner.start();
+    }
+
+    return spinner;
   }
 
   /**
