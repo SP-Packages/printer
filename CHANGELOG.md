@@ -1,3 +1,13 @@
+## [2.7.0](https://github.com/SP-Packages/printer/compare/v2.6.0...v2.7.0) (2025-03-28)
+
+### Features
+
+* **makefile:** add Makefile with help, start, dep, and lint targets ([b125999](https://github.com/SP-Packages/printer/commit/b125999fbac920128702cacbfff55238436355d0))
+
+### Bug Fixes
+
+* **makefile:** update phony targets to include start and dep ([3ade967](https://github.com/SP-Packages/printer/commit/3ade96745aca57293ccdb63e33051ff8423341cb))
+
 ## [2.6.0](https://github.com/SP-Packages/printer/compare/v2.5.0...v2.6.0) (2025-03-28)
 
 ### Features
