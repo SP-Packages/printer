@@ -97,6 +97,7 @@
   },
   "dependencies": {
     "chalk": "^5.4.1",
+    "ora": "^8.2.0",
     "strip-ansi": "^7.1.0"
   },
   "scripts": {
