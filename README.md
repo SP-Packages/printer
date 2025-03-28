@@ -20,6 +20,7 @@
 - 🎨 **Rich formatting** for messages (success, error, warning, info, headers)
 - 🔄 **Verbose mode** for detailed logging
 - 🔇 **Quiet mode** to suppress non-essential output
+- 🌀 **Spinner** for showing progress during async operations
 - 🚀 **Usable via CLI or programmatically in Node.js**
 - 📜 **Structured output** for better readability
 - 🛠 **Ideal for CI/CD, automation scripts, and development tools**
@@ -93,6 +94,33 @@ Printer.warning("This is a warning message");
 Printer.info("Fetching data...");
 Printer.message("Regular message");
 ```
+
+### **Using Spinner**
+
+The spinner feature is perfect for displaying progress during asynchronous operations. It shows an animated loading indicator that can be updated with success or error states.
+
+```ts
+import { Printer } from "@sp-packages/printer";
+
+const spinner = Printer.spinner("Loading data...");
+
+// During async operations
+try {
+  await someAsyncOperation();
+  spinner.succeed("Data loaded successfully!");
+} catch (error) {
+  spinner.fail("Failed to load data!");
+}
+```
+
+#### **Spinner Methods:**
+
+- `spinner.start()` - Start or restart the spinner
+- `spinner.stop()` - Stop and clear the spinner
+- `spinner.succeed(text?)` - Stop the spinner and show success state
+- `spinner.fail(text?)` - Stop the spinner and show failure state
+- `spinner.warn(text?)` - Stop the spinner and show warning state
+- `spinner.info(text?)` - Stop the spinner and show info state
 
 ### **Verbose Mode**
 
