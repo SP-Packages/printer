@@ -1,4 +1,4 @@
-.PHONY: help deploy lint test clean
+.PHONY: help start dep lint
 
 help:
 	@echo "Usage: make [target]"
