@@ -1,3 +1,10 @@
+## [2.6.0](https://github.com/SP-Packages/printer/compare/v2.5.0...v2.6.0) (2025-03-28)
+
+### Features
+
+* **printer:** add spinner method to display loading indicators ([b4f2844](https://github.com/SP-Packages/printer/commit/b4f284429534adb0b33fd9a1b81300c2a2508221))
+* **workflows:** update Prepare and Release Workflows ([a277af2](https://github.com/SP-Packages/printer/commit/a277af2d8d82e9a76d96207fb42f67b378df10e7))
+
 ## [2.5.0](https://github.com/SP-Packages/printer/compare/v2.4.0...v2.5.0) (2025-03-22)
 
 ### Features
