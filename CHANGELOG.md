@@ -1,3 +1,9 @@
+## [2.8.0](https://github.com/SP-Packages/printer/compare/v2.7.0...v2.8.0) (2025-04-01)
+
+### Features
+
+* **workflows:** update action versions and permissions in workflows ([19a1019](https://github.com/SP-Packages/printer/commit/19a10197eccaf8068e50ce3329ad4945ee5d43db))
+
 ## [2.7.0](https://github.com/SP-Packages/printer/compare/v2.6.0...v2.7.0) (2025-03-28)
 
 ### Features
