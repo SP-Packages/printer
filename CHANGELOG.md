@@ -1,3 +1,9 @@
+## [2.9.0](https://github.com/SP-Packages/printer/compare/v2.8.0...v2.9.0) (2025-04-11)
+
+### Features
+
+* **printer:** add spinner handling to log methods ([5dc4069](https://github.com/SP-Packages/printer/commit/5dc40693b6d47ad4bca75d5a59ce464c507be2f1))
+
 ## [2.8.0](https://github.com/SP-Packages/printer/compare/v2.7.0...v2.8.0) (2025-04-01)
 
 ### Features
