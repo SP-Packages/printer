@@ -6,6 +6,7 @@ import { formatMessage, sanitizeMessage } from "./formatter.js";
 export class Printer {
   private static verbose = false;
   private static quiet = false;
+  private static activeSpinner: Ora | null = null;
 
   /**
    * Enable verbose mode.
@@ -52,6 +53,15 @@ export class Printer {
    */
   static get isVerbose() {
     return this.verbose;
+  }
+
+  /**
+   * Clear the spinner and stop it.
+   */
+  private static handleSpinner() {
+    if (this.activeSpinner?.isSpinning) {
+      this.activeSpinner.clear().start();
+    }
   }
 
   /**
@@ -103,6 +113,7 @@ export class Printer {
           this.sectionHeader(String(message));
           break;
         default:
+          this.handleSpinner();
           console.log(sanitizeMessage(typeof message === "string" ? message : String(message)));
       }
     }
@@ -121,6 +132,7 @@ export class Printer {
 
     if (this.shouldPrint()) {
       spinner.start();
+      this.activeSpinner = spinner;
     }
 
     return spinner;
@@ -132,6 +144,7 @@ export class Printer {
    */
   static message(message: string) {
     if (this.shouldPrint()) {
+      this.handleSpinner();
       console.log(message);
     }
   }
@@ -141,6 +154,7 @@ export class Printer {
    */
   static blankLine() {
     if (this.shouldPrint()) {
+      this.handleSpinner();
       console.log("");
     }
   }
@@ -151,6 +165,7 @@ export class Printer {
    */
   static array<T>(array: T[]) {
     if (this.shouldPrint()) {
+      this.handleSpinner();
       array.forEach((line) => console.log(`- ${line}`));
     }
   }
@@ -163,6 +178,7 @@ export class Printer {
     if (this.shouldPrint()) {
       const length = 60;
       const line = chalk.cyan.bold("#".repeat(length));
+      this.handleSpinner();
       console.log(line);
       console.log(chalk.cyan.bold(` ${message}`));
       console.log(line);
@@ -177,6 +193,7 @@ export class Printer {
     if (this.shouldPrint()) {
       const length = 50;
       const line = chalk.magenta.bold("*".repeat(length));
+      this.handleSpinner();
       console.log(line);
       console.log(chalk.magenta.bold(` ${message}`));
       console.log(line);
@@ -191,6 +208,7 @@ export class Printer {
     if (this.shouldPrint()) {
       const length = 40;
       const line = chalk.blue.bold("=".repeat(length));
+      this.handleSpinner();
       console.log(line);
       console.log(chalk.blue.bold(` ${message}`));
       console.log(line);
@@ -205,6 +223,7 @@ export class Printer {
     if (this.shouldPrint()) {
       const length = 40;
       const line = chalk.cyan.bold("-".repeat(length));
+      this.handleSpinner();
       console.log(line);
       console.log(chalk.cyan.bold(` ${message}`));
       console.log(line);
@@ -219,6 +238,7 @@ export class Printer {
     if (this.shouldPrint()) {
       const length = 30;
       const line = chalk.magenta.bold("-".repeat(length));
+      this.handleSpinner();
       console.log(line);
       console.log(chalk.magenta.bold(` ${message}`));
       console.log(line);
@@ -233,6 +253,7 @@ export class Printer {
     if (this.shouldPrint()) {
       const length = 20;
       const line = chalk.blue.bold("-".repeat(length));
+      this.handleSpinner();
       console.log(line);
       console.log(chalk.blue.bold(` ${message}`));
       console.log(line);
@@ -245,6 +266,7 @@ export class Printer {
    */
   static info(message: string) {
     if (this.shouldPrint()) {
+      this.handleSpinner();
       console.info(formatMessage("info", message));
     }
   }
@@ -255,6 +277,7 @@ export class Printer {
    */
   static success(message: string) {
     if (this.shouldPrint()) {
+      this.handleSpinner();
       console.log(formatMessage("success", message));
     }
   }
@@ -265,6 +288,7 @@ export class Printer {
    */
   static warning(message: string) {
     if (this.shouldPrint()) {
+      this.handleSpinner();
       console.log(formatMessage("warning", message));
     }
   }
@@ -276,6 +300,7 @@ export class Printer {
    */
   static error(message: string, error?: unknown) {
     if (this.shouldPrint()) {
+      this.handleSpinner();
       console.log(formatMessage("error", message));
       if (error) {
         const errMsg = error instanceof Error ? error.stack || error.message : String(error);
