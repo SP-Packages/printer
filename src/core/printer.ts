@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import chalk from "chalk";
-import ora, { Ora } from "ora"; // Import the ora package
-import { formatMessage, sanitizeMessage } from "./formatter.js";
+import chalk from 'chalk';
+import ora, { Ora } from 'ora'; // Import the ora package
+import { formatMessage, sanitizeMessage } from './formatter.js';
 
 export class Printer {
   private static verbose = false;
@@ -72,49 +72,53 @@ export class Printer {
   static log(
     message: unknown,
     type:
-      | "error"
-      | "success"
-      | "warning"
-      | "array"
-      | "text"
-      | "header"
-      | "subheader"
-      | "section" = "text",
+      | 'error'
+      | 'success'
+      | 'warning'
+      | 'array'
+      | 'text'
+      | 'header'
+      | 'subheader'
+      | 'section' = 'text'
   ) {
     if (this.verbose && this.shouldPrint()) {
       switch (type) {
-        case "array":
+        case 'array':
           if (Array.isArray(message)) {
             this.array(message);
           } else {
             console.log("Expected an array for type 'array'");
           }
           break;
-        case "error":
+        case 'error':
           if (message instanceof Error) {
             this.error(message.message, message);
           } else {
             this.error(String(message));
           }
           break;
-        case "success":
+        case 'success':
           this.success(String(message));
           break;
-        case "warning":
+        case 'warning':
           this.warning(String(message));
           break;
-        case "header":
+        case 'header':
           this.header(String(message));
           break;
-        case "subheader":
+        case 'subheader':
           this.subheader(String(message));
           break;
-        case "section":
+        case 'section':
           this.sectionHeader(String(message));
           break;
         default:
           this.handleSpinner();
-          console.log(sanitizeMessage(typeof message === "string" ? message : String(message)));
+          console.log(
+            sanitizeMessage(
+              typeof message === 'string' ? message : String(message)
+            )
+          );
       }
     }
   }
@@ -127,7 +131,7 @@ export class Printer {
   static spinner(text: string): Ora {
     const spinner = ora({
       text: sanitizeMessage(text),
-      color: "blue",
+      color: 'blue'
     });
 
     if (this.shouldPrint()) {
@@ -155,7 +159,7 @@ export class Printer {
   static blankLine() {
     if (this.shouldPrint()) {
       this.handleSpinner();
-      console.log("");
+      console.log('');
     }
   }
 
@@ -177,7 +181,7 @@ export class Printer {
   static header(message: string) {
     if (this.shouldPrint()) {
       const length = 60;
-      const line = chalk.cyan.bold("#".repeat(length));
+      const line = chalk.cyan.bold('#'.repeat(length));
       this.handleSpinner();
       console.log(line);
       console.log(chalk.cyan.bold(` ${message}`));
@@ -192,7 +196,7 @@ export class Printer {
   static subheader(message: string) {
     if (this.shouldPrint()) {
       const length = 50;
-      const line = chalk.magenta.bold("*".repeat(length));
+      const line = chalk.magenta.bold('*'.repeat(length));
       this.handleSpinner();
       console.log(line);
       console.log(chalk.magenta.bold(` ${message}`));
@@ -207,7 +211,7 @@ export class Printer {
   static sectionHeader(message: string) {
     if (this.shouldPrint()) {
       const length = 40;
-      const line = chalk.blue.bold("=".repeat(length));
+      const line = chalk.blue.bold('='.repeat(length));
       this.handleSpinner();
       console.log(line);
       console.log(chalk.blue.bold(` ${message}`));
@@ -222,7 +226,7 @@ export class Printer {
   static plainHeader(message: string) {
     if (this.shouldPrint()) {
       const length = 40;
-      const line = chalk.cyan.bold("-".repeat(length));
+      const line = chalk.cyan.bold('-'.repeat(length));
       this.handleSpinner();
       console.log(line);
       console.log(chalk.cyan.bold(` ${message}`));
@@ -237,7 +241,7 @@ export class Printer {
   static plainSubheader(message: string) {
     if (this.shouldPrint()) {
       const length = 30;
-      const line = chalk.magenta.bold("-".repeat(length));
+      const line = chalk.magenta.bold('-'.repeat(length));
       this.handleSpinner();
       console.log(line);
       console.log(chalk.magenta.bold(` ${message}`));
@@ -252,7 +256,7 @@ export class Printer {
   static plainSectionHeader(message: string) {
     if (this.shouldPrint()) {
       const length = 20;
-      const line = chalk.blue.bold("-".repeat(length));
+      const line = chalk.blue.bold('-'.repeat(length));
       this.handleSpinner();
       console.log(line);
       console.log(chalk.blue.bold(` ${message}`));
@@ -267,7 +271,7 @@ export class Printer {
   static info(message: string) {
     if (this.shouldPrint()) {
       this.handleSpinner();
-      console.info(formatMessage("info", message));
+      console.info(formatMessage('info', message));
     }
   }
 
@@ -278,7 +282,7 @@ export class Printer {
   static success(message: string) {
     if (this.shouldPrint()) {
       this.handleSpinner();
-      console.log(formatMessage("success", message));
+      console.log(formatMessage('success', message));
     }
   }
 
@@ -289,7 +293,7 @@ export class Printer {
   static warning(message: string) {
     if (this.shouldPrint()) {
       this.handleSpinner();
-      console.log(formatMessage("warning", message));
+      console.log(formatMessage('warning', message));
     }
   }
 
@@ -301,10 +305,11 @@ export class Printer {
   static error(message: string, error?: unknown) {
     if (this.shouldPrint()) {
       this.handleSpinner();
-      console.log(formatMessage("error", message));
+      console.log(formatMessage('error', message));
       if (error) {
-        const errMsg = error instanceof Error ? error.stack || error.message : String(error);
-        console.log(formatMessage("error", errMsg));
+        const errMsg =
+          error instanceof Error ? error.stack || error.message : String(error);
+        console.log(formatMessage('error', errMsg));
       }
     }
   }

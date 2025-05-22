@@ -87,13 +87,13 @@ You can also use `printer` inside your JavaScript/TypeScript projects.
 ### **Import and Use in Your Project**
 
 ```ts
-import { Printer } from "@sp-packages/printer";
+import { Printer } from '@sp-packages/printer';
 
-Printer.success("Setup completed successfully!");
-Printer.error("An error occurred", new Error("Database connection failed"));
-Printer.warning("This is a warning message");
-Printer.info("Fetching data...");
-Printer.message("Regular message");
+Printer.success('Setup completed successfully!');
+Printer.error('An error occurred', new Error('Database connection failed'));
+Printer.warning('This is a warning message');
+Printer.info('Fetching data...');
+Printer.message('Regular message');
 ```
 
 ### **Using Spinner**
@@ -101,16 +101,16 @@ Printer.message("Regular message");
 The spinner feature is perfect for displaying progress during asynchronous operations. It shows an animated loading indicator that can be updated with success or error states.
 
 ```ts
-import { Printer } from "@sp-packages/printer";
+import { Printer } from '@sp-packages/printer';
 
-const spinner = Printer.spinner("Loading data...");
+const spinner = Printer.spinner('Loading data...');
 
 // During async operations
 try {
   await someAsyncOperation();
-  spinner.succeed("Data loaded successfully!");
+  spinner.succeed('Data loaded successfully!');
 } catch (error) {
-  spinner.fail("Failed to load data!");
+  spinner.fail('Failed to load data!');
 }
 ```
 
@@ -131,7 +131,7 @@ Verbose mode provides detailed logging, which can be extremely helpful for debug
 
 ```ts
 Printer.enableVerbose();
-Printer.log("This will display only in verbose mode.");
+Printer.log('This will display only in verbose mode.');
 ```
 
 #### **Disable Verbose Mode:**
@@ -144,8 +144,8 @@ Printer.disableVerbose();
 
 ```ts
 Printer.enableVerbose();
-Printer.success("Process completed");
-Printer.log("Detailed execution log...");
+Printer.success('Process completed');
+Printer.log('Detailed execution log...');
 ```
 
 **Output:**
@@ -159,8 +159,8 @@ Detailed execution log...
 
 ```ts
 Printer.disableVerbose();
-Printer.success("Process completed");
-Printer.log("Detailed execution log...");
+Printer.success('Process completed');
+Printer.log('Detailed execution log...');
 ```
 
 **Output:**
@@ -199,9 +199,9 @@ Printer.disableQuiet();
 
 ```ts
 Printer.enableQuiet();
-Printer.success("Process completed");
-Printer.warning("This warning will NOT be displayed");
-Printer.error("Critical error!");
+Printer.success('Process completed');
+Printer.warning('This warning will NOT be displayed');
+Printer.error('Critical error!');
 ```
 
 **Output:**
@@ -216,8 +216,8 @@ Printer.error("Critical error!");
 
 ```ts
 Printer.disableQuiet();
-Printer.success("Process completed");
-Printer.warning("This warning WILL be displayed");
+Printer.success('Process completed');
+Printer.warning('This warning WILL be displayed');
 ```
 
 **Output:**
