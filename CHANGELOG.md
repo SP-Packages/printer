@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/SP-Packages/printer/compare/v2.10.0...v2.10.1) (2025-05-22)
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([ac6a45b](https://github.com/SP-Packages/printer/commit/ac6a45b765e9218ac12aedacbf35f1b88d657fbd))
+* **workflows:** update action versions in labeler, prepare, and release ([f8772b4](https://github.com/SP-Packages/printer/commit/f8772b4494daf61b7fd209b081dccd2a5c5e6e3a))
+
 ## [2.10.0](https://github.com/SP-Packages/printer/compare/v2.9.0...v2.10.0) (2025-04-11)
 
 ### Features
