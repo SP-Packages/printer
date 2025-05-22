@@ -1,3 +1,9 @@
+## [2.10.2](https://github.com/SP-Packages/printer/compare/v2.10.1...v2.10.2) (2025-05-22)
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([5d44fb1](https://github.com/SP-Packages/printer/commit/5d44fb186d5d11b9bf16864cc088b6e6aa2e63d1))
+
 ## [2.10.1](https://github.com/SP-Packages/printer/compare/v2.10.0...v2.10.1) (2025-05-22)
 
 ### Bug Fixes
