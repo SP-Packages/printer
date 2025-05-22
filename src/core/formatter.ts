@@ -1,44 +1,45 @@
-import chalk from "chalk";
-import stripAnsi from "strip-ansi";
+import chalk from 'chalk';
+import stripAnsi from 'strip-ansi';
 
 /**
  * Detect the environment in which the script is running.
  * @returns The environment type: "ci", "vscode", or "terminal".
  */
-export function detectEnvironment(): "ci" | "vscode" | "terminal" {
-  if (process.env.CI === "true") return "ci";
-  if (process.env.VSCODE_CWD) return "vscode";
-  if (process.env.TERM_PROGRAM === "vscode") return "vscode";
+export function detectEnvironment(): 'ci' | 'vscode' | 'terminal' {
+  if (process.env.CI === 'true') return 'ci';
+  if (process.env.VSCODE_CWD) return 'vscode';
+  if (process.env.TERM_PROGRAM === 'vscode') return 'vscode';
 
-  return "terminal";
+  return 'terminal';
 }
 
 const environment = detectEnvironment();
 
 // Check if the terminal supports Unicode characters properly
 const supportsUnicode =
-  process.platform !== "win32" || (environment !== "ci" && environment !== "vscode");
+  process.platform !== 'win32' ||
+  (environment !== 'ci' && environment !== 'vscode');
 
 /**
  * Symbols and colors for different message types, with fallbacks for various environments
  */
 const symbols = {
   info: {
-    icon: supportsUnicode ? chalk.cyan("ℹ") : chalk.cyan("i"),
-    color: chalk.cyan,
+    icon: supportsUnicode ? chalk.cyan('ℹ') : chalk.cyan('i'),
+    color: chalk.cyan
   },
   success: {
-    icon: supportsUnicode ? chalk.green("✅") : chalk.green("+"),
-    color: chalk.green,
+    icon: supportsUnicode ? chalk.green('✅') : chalk.green('+'),
+    color: chalk.green
   },
   warning: {
-    icon: supportsUnicode ? chalk.yellow("⚠ ") : chalk.yellow("!"),
-    color: chalk.yellow,
+    icon: supportsUnicode ? chalk.yellow('⚠ ') : chalk.yellow('!'),
+    color: chalk.yellow
   },
   error: {
-    icon: supportsUnicode ? chalk.red("❌ ") : chalk.red("x"),
-    color: chalk.red,
-  },
+    icon: supportsUnicode ? chalk.red('❌ ') : chalk.red('x'),
+    color: chalk.red
+  }
 };
 
 export type MessageType = keyof typeof symbols;
@@ -50,7 +51,7 @@ export type MessageType = keyof typeof symbols;
  * @returns The sanitized message
  */
 export function sanitizeMessage(message: string): string {
-  if (environment === "vscode" || environment === "ci" || !supportsUnicode) {
+  if (environment === 'vscode' || environment === 'ci' || !supportsUnicode) {
     return stripAnsi(message);
   }
   return message;
@@ -71,10 +72,10 @@ export function formatMessage(type: MessageType, message: string): string {
   } catch {
     // Fallback to basic formatting if anything fails
     const typeMap: Record<MessageType, string> = {
-      info: "INFO",
-      success: "SUCCESS",
-      warning: "WARNING",
-      error: "ERROR",
+      info: 'INFO',
+      success: 'SUCCESS',
+      warning: 'WARNING',
+      error: 'ERROR'
     };
     return `[${typeMap[type]}] ${sanitizedMessage}`;
   }
