@@ -4,9 +4,10 @@ on:
   - pull_request_target
 
 permissions:
-  contents: read
+  issues: write
+  contents: write
   pull-requests: write
 
 jobs:
   labeler:
-    uses: SP-Packages/actions/.github/workflows/pr-labeler.yml@v1.1.5
+    uses: SP-Packages/actions/.github/workflows/pr-labeler.yml@v1.1.9
