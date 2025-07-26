@@ -1,3 +1,5 @@
+## [2.10.3](https://github.com/SP-Packages/printer/compare/v2.10.2...v2.10.3) (2025-07-26)
+
 ## [2.10.2](https://github.com/SP-Packages/printer/compare/v2.10.1...v2.10.2) (2025-05-22)
 
 ### Bug Fixes
