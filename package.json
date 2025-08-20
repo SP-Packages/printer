@@ -1,7 +1,7 @@
 {
   "name": "@sp-packages/printer",
   "description": "A lightweight CLI tool and Node.js module for formatted console output.",
-  "version": "2.10.3",
+  "version": "2.11.0",
   "type": "module",
   "license": "MIT",
   "author": {

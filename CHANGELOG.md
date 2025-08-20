@@ -1,3 +1,9 @@
+## [2.11.0](https://github.com/SP-Packages/printer/compare/v2.10.3...v2.11.0) (2025-08-20)
+
+### Features
+
+* **printer:** add support for minimal output ([a31685c](https://github.com/SP-Packages/printer/commit/a31685c11dba854570ec9372569fc99263fb1be9))
+
 ## [2.10.3](https://github.com/SP-Packages/printer/compare/v2.10.2...v2.10.3) (2025-07-26)
 
 ## [2.10.2](https://github.com/SP-Packages/printer/compare/v2.10.1...v2.10.2) (2025-05-22)
