@@ -1,58 +1,75 @@
 /* eslint-disable no-console */
 import chalk from 'chalk';
-import ora, { Ora } from 'ora'; // Import the ora package
+import ora, { Ora } from 'ora';
 import { formatMessage, sanitizeMessage } from './formatter.js';
 
+type PrinterMode = 'verbose' | 'minimal' | 'quiet';
+
 export class Printer {
-  private static verbose = false;
-  private static quiet = false;
+  private static mode: PrinterMode = 'minimal';
   private static activeSpinner: Ora | null = null;
 
   /**
    * Enable verbose mode.
    */
   static enableVerbose() {
-    this.verbose = true;
-    this.quiet = false;
+    this.mode = 'verbose';
   }
 
   /**
-   * Disable verbose mode.
+   * Enable minimal mode.
    */
-  static disableVerbose() {
-    this.verbose = false;
+  static enableMinimal() {
+    this.mode = 'minimal';
   }
 
   /**
    * Enable quiet mode.
    */
   static enableQuiet() {
-    this.quiet = true;
-    this.verbose = false;
+    this.mode = 'quiet';
   }
 
   /**
-   * Disable quiet mode.
+   * Disable quiet mode
    */
   static disableQuiet() {
-    this.quiet = false;
+    if (this.mode === 'quiet') {
+      this.mode = 'minimal';
+    }
   }
 
   /**
-   * Check if the printer is in verbose mode.
-   * @returns True if in verbose mode, false otherwise.
+   * Disable verbose mode (set to minimal by default).
+   */
+  static disableVerbose() {
+    if (this.mode === 'verbose') {
+      this.mode = 'minimal';
+    }
+  }
+
+  /**
+   * Check if the printer should print output.
+   * @returns True if not in quiet mode.
    */
   private static shouldPrint(): boolean {
-    return !this.quiet; // Print unless in quiet mode
+    return this.mode !== 'quiet';
   }
 
   /**
-   * Check if the printer is in verbose mode.
-   * Note: This does not check if the printer should print, only if verbose mode is enabled.
-   * @returns True if in verbose mode, false otherwise.
+   * Check if the printer is in quiet mode.
+   * @returns True if in quiet mode.
    */
   static get isVerbose() {
-    return this.verbose;
+    return this.mode === 'verbose';
+  }
+
+  /**
+   * Check if the printer is in quiet mode.
+   * @returns True if in quiet mode.
+   */
+  static get isMinimal() {
+    return this.mode === 'minimal';
   }
 
   /**
@@ -81,7 +98,7 @@ export class Printer {
       | 'subheader'
       | 'section' = 'text'
   ) {
-    if (this.verbose && this.shouldPrint()) {
+    if (this.shouldPrint()) {
       switch (type) {
         case 'array':
           if (Array.isArray(message)) {
