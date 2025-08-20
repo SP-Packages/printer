@@ -6,7 +6,7 @@ import { formatMessage, sanitizeMessage } from './formatter.js';
 type PrinterMode = 'verbose' | 'minimal' | 'quiet';
 
 export class Printer {
-  private static mode: PrinterMode = 'minimal';
+  private static mode: PrinterMode = 'quiet';
   private static activeSpinner: Ora | null = null;
 
   /**
