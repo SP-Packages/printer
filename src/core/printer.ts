@@ -98,7 +98,7 @@ export class Printer {
       | 'subheader'
       | 'section' = 'text'
   ) {
-    if (this.shouldPrint()) {
+    if (this.mode === 'verbose' && this.shouldPrint()) {
       switch (type) {
         case 'array':
           if (Array.isArray(message)) {
