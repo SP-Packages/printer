@@ -20,6 +20,7 @@
 
 - 🎨 **Rich formatting** for messages (success, error, warning, info, headers)
 - 🔄 **Verbose mode** for detailed logging
+- 🧩 **Minimal mode** for clean, essential-only outputs
 - 🔇 **Quiet mode** to suppress non-essential output
 - 🌀 **Spinner** for showing progress during async operations
 - 🚀 **Usable via CLI or programmatically in Node.js**
@@ -122,6 +123,37 @@ try {
 - `spinner.fail(text?)` - Stop the spinner and show failure state
 - `spinner.warn(text?)` - Stop the spinner and show warning state
 - `spinner.info(text?)` - Stop the spinner and show info state
+
+### **Minimal Mode (Programmatic)**
+
+Minimal mode can be enabled programmatically to handle essential outputs
+
+#### **Enable Minimal Mode:**
+
+```ts
+Printer.enableMinimal();
+Printer.success('Minimal output');
+```
+
+#### **Disable Minimal Mode:**
+
+```ts
+Printer.disableMinimal();
+```
+
+#### **Example (Minimal Mode ON):**
+
+```ts
+Printer.enableMinimal();
+Printer.success('Process completed');
+Printer.log('Detailed execution log...');
+```
+
+**Output:**
+
+```sh
+✅ [SUCCESS] Process completed
+```
 
 ### **Verbose Mode**
 
@@ -247,6 +279,7 @@ Printer.warning('This warning WILL be displayed');
 - **Node.js CLI Tools** – Format console outputs for better readability
 - **Development Debugging** – Enable verbose mode for debugging
 - **Project Setup Scripts** – Display status messages during installations
+- **Minimal Output Needs** – Use minimal mode for clean, script-friendly output
 
 ---
 
