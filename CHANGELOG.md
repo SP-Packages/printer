@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/SP-Packages/printer/compare/v2.11.0...v2.11.1) (2025-08-20)
+
+### Bug Fixes
+
+* **printer:** change default printer mode from minimal to quiet ([38dd6c5](https://github.com/SP-Packages/printer/commit/38dd6c5646de8b0bd3fe66c3731c1eed71860d68))
+* **printer:** restrict logging to verbose mode when printing ([b2078ff](https://github.com/SP-Packages/printer/commit/b2078ff2ecfc63efa53628fd82534b4ca2780ad1))
+
 ## [2.11.0](https://github.com/SP-Packages/printer/compare/v2.10.3...v2.11.0) (2025-08-20)
 
 ### Features
