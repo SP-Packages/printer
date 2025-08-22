@@ -1,3 +1,15 @@
+## [2.12.0](https://github.com/SP-Packages/printer/compare/v2.11.2...v2.12.0) (2025-08-22)
+
+### Features
+
+* **lintrc:** update linting tools configuration for PHP and NPM ([7db50d2](https://github.com/SP-Packages/printer/commit/7db50d27b302b3650ca180e70ba7cc438a53dadf))
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([a6ffcd8](https://github.com/SP-Packages/printer/commit/a6ffcd82f34def0baf6aa55f592677d4d600b513))
+* **lint-staged:** enforce strict mode for lintrc in lint-staged config ([e565af6](https://github.com/SP-Packages/printer/commit/e565af6f816dd45ff673c1d6958fc6edbef89f0b))
+* **workflows:** update action versions and permissions in workflows ([f6de5fc](https://github.com/SP-Packages/printer/commit/f6de5fc899247d8ebb476ca9468363196830c3f3))
+
 ## [2.11.2](https://github.com/SP-Packages/printer/compare/v2.11.1...v2.11.2) (2025-08-21)
 
 ### Bug Fixes
