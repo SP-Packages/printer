@@ -7,7 +7,7 @@ on:
 
 jobs:
   prepare:
-    uses: SP-Libraries/actions/.github/workflows/code-quality.yml@v0.4.0
+    uses: SP-Libraries/actions/.github/workflows/code-quality.yml@v0.4.1
     with:
       VERBOSE: true
     secrets:
@@ -15,16 +15,17 @@ jobs:
 
   release:
     needs: prepare
-    uses: SP-Libraries/actions/.github/workflows/semantic-release.yml@v0.4.0
+    uses: SP-Libraries/actions/.github/workflows/semantic-release.yml@v0.4.1
     with:
       VERBOSE: true
+      RUN_BUILD: true
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   sync:
     needs: release
-    uses: SP-Libraries/actions/.github/workflows/sync-branch.yml@v0.4.0
+    uses: SP-Libraries/actions/.github/workflows/sync-branch.yml@v0.4.1
     with:
       VERBOSE: true
     secrets:

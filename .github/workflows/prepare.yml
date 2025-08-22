@@ -9,7 +9,7 @@ on:
 
 jobs:
   prepare:
-    uses: SP-Libraries/actions/.github/workflows/code-quality.yml@v0.4.0
+    uses: SP-Libraries/actions/.github/workflows/code-quality.yml@v0.4.1
     with:
       VERBOSE: true
     secrets:
